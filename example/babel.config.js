@@ -1,22 +1,27 @@
-const path = require('path');
-const pak = require('../package.json');
+const path = require('path')
+const pak = require('../package.json')
 
-module.exports = function (api) {
-  api.cache(true);
-
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: [
-      [
-        'module-resolver',
-        {
-          extensions: ['.tsx', '.ts', '.js', '.json'],
-          alias: {
-            // For development, we want to alias the library to the source
-            [pak.name]: path.join(__dirname, '..', pak.source),
-          },
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+  plugins: [
+    [
+      'module-resolver',
+      {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx',
+          '.android.js',
+          '.android.tsx',
+          '.ios.js',
+          '.ios.tsx',
+        ],
+        alias: {
+          [pak.name]: path.join(__dirname, '..', pak.source),
         },
-      ],
+      },
     ],
-  };
-};
+    'react-native-reanimated/plugin',
+  ],
+}

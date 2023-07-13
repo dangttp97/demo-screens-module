@@ -1,6 +1,13 @@
 {
-  "extends": "../tsconfig",
+  "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     // Avoid expo-cli auto-generating a tsconfig
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "baseUrl": ".",
+    "paths": {
+      "react-native-demo_screen": ["../src/index"]
+    },
+    "verbatimModuleSyntax": false
   }
 }

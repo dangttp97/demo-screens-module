@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "outDir": "lib",
     "paths": {
       "react-native-demo_screen": ["./src/index"]
     },
@@ -22,7 +22,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
-    "verbatimModuleSyntax": true
-  }
+    "target": "esnext"
+  },
+  "exclude": ["example"]
 }
