@@ -1,19 +1,32 @@
 import React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { useNavigation } from '../../hooks'
-import { AppScreens } from '../../declar'
+import { useNavigation, useRoute } from '../../hooks'
 
 export const Login = () => {
-  const navigation = useNavigation<AppScreens>()
+  const navigation = useNavigation()
+  const route = useRoute<'ECOModuleLogin'>()
+  const { username, password } = route.params
 
   return (
     <View style={styles.container}>
-      <Text>LOGIN</Text>
+      <Text style={{ color: 'black' }}>LOGIN</Text>
+      <Text style={{ color: 'black' }}>Username: {username}</Text>
+      <Text style={{ color: 'black' }}>Password: {password}</Text>
       <Button
-        title="Return Home"
+        title="Go To Register"
         onPress={() => {
           console.log('Pressed')
-          navigation.navigate('AppExtendedScreen')
+          navigation.navigate('ECOModuleRegister', {
+            username: 'ABC',
+            fullName: 'DEF',
+          })
+        }}
+      />
+      <Button
+        title="Go Back"
+        disabled={false}
+        onPress={() => {
+          navigation.goBack()
         }}
       />
     </View>

@@ -1,17 +1,17 @@
-import { NavigationContainerRefWithCurrent } from '@react-navigation/native';
-import React, { PropsWithChildren } from 'react';
+import { NavigationContainerRefWithCurrent } from '@react-navigation/native'
+import React, { PropsWithChildren } from 'react'
+import { ECOModuleScreens } from '../declaration'
 
-export type AppProviderType = {
-  navigationRef?: NavigationContainerRefWithCurrent<ReactNavigation.RootParamList>;
-  onReady?: () => void;
-};
+type ECOProviderProps = {
+  navigationRef?: NavigationContainerRefWithCurrent<ECOModuleScreens>
+}
 
-export const Context = React.createContext<AppProviderType>(null!);
+export const Context = React.createContext<ECOProviderProps>(null!)
 
 export const ECOProvider = ({
   ...props
-}: PropsWithChildren<AppProviderType>) => {
-  return (
-    <Context.Provider value={{ ...props }}>{props.children}</Context.Provider>
-  );
-};
+}: PropsWithChildren<ECOProviderProps>) => {
+  const { children, ...rest } = props
+
+  return <Context.Provider value={{ ...rest }}>{children}</Context.Provider>
+}

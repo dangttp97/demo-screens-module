@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "lib",
     "paths": {
-      "react-native-demo_screen": ["./src/index"]
+      "@dangttp/demo-screens-module": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

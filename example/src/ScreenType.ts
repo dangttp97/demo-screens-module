@@ -1,5 +1,5 @@
-import type { AppScreens } from 'react-native-demo_screen'
+import { ECOModuleScreens } from '@dangttp/demo-screens-module'
 
-export type AppScreenType = AppScreens & {
-  Home: {}
+export type AppScreenType = ECOModuleScreens & {
+  Home?: {}
 }

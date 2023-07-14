@@ -1,20 +1,33 @@
 import React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { useNavigation } from '../../hooks'
-import { AppScreens } from '../../declar'
+import { useNavigation, useRoute } from '../../hooks'
 
 export const Register = () => {
-  const navigation = useNavigation<AppScreens>()
+  const navigation = useNavigation()
+  const route = useRoute<'ECOModuleRegister'>()
+
+  const { username, fullName } = route.params
 
   return (
     <View style={styles.container}>
       <Text style={{ color: 'black' }}>REGISTER</Text>
+      <Text style={{ color: 'black' }}>Username: {username}</Text>
+      <Text style={{ color: 'black' }}>Full Name: {fullName}</Text>
       <Button
-        title="Return to App"
+        title="Go To Login"
         disabled={false}
         onPress={() => {
-          console.log('Register pressed')
-          navigation.navigate('AppExtendedScreen')
+          navigation.navigate('ECOModuleLogin', {
+            username: 'phuongdang012',
+            password: 'ABCDEF',
+          })
+        }}
+      />
+      <Button
+        title="Go Back"
+        disabled={false}
+        onPress={() => {
+          navigation.goBack()
         }}
       />
     </View>
@@ -23,8 +36,9 @@ export const Register = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
-    width: '100%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
     backgroundColor: 'red',
   },

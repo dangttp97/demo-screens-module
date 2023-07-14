@@ -1,21 +1,30 @@
-import { AppScreenType } from '../../ScreenType'
 import React from 'react'
 import { Button, Text, View } from 'react-native'
-import { useNavigation } from 'react-native-demo_screen'
+import { useNavigation } from '@dangttp/demo-screens-module'
 
 export const Home = () => {
-  const navigation = useNavigation<AppScreenType>()
+  const navigation = useNavigation()
 
   return (
     <View style={{ flex: 1 }}>
       <Text>HOME</Text>
       <Button
         title="Navigate Login"
-        onPress={() => navigation.navigate('ECOLogin')}
+        onPress={() =>
+          navigation.navigate('ECOModuleLogin', {
+            username: 'ewrJKA',
+            password: 'werwoier',
+          })
+        }
       />
       <Button
         title="Navigate Register"
-        onPress={() => navigation.navigate('ECORegister')}
+        onPress={() =>
+          navigation.navigate('ECOModuleRegister', {
+            username: 'ewrJKA',
+            fullName: 'Phuong Dang',
+          })
+        }
       />
     </View>
   )

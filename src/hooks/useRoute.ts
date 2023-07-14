@@ -3,13 +3,14 @@
  *
  * @returns Route prop of the parent screen.
  */
-import { RouteProp } from '@react-navigation/native';
-import { useRoute as RNUseRoute } from '@react-navigation/native';
-import { AppScreens } from '../declar';
 
-export const useRoute = <T extends keyof AppScreens>(): RouteProp<
-  AppScreens,
+import { RouteProp } from '@react-navigation/native'
+import { useRoute as RNUseRoute } from '@react-navigation/native'
+import { ECOModuleScreens } from '../declaration'
+
+export const useRoute = <T extends keyof ECOModuleScreens>(): RouteProp<
+  ECOModuleScreens,
   T
 > => {
-  return RNUseRoute<RouteProp<AppScreens, T>>();
-};
+  return RNUseRoute<RouteProp<ECOModuleScreens, T>>()
+}

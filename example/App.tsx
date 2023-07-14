@@ -1,32 +1,27 @@
-import { useNavigationContainerRef } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native'
 import * as React from 'react'
 
-import { ECOProvider, createNavigationTree } from 'react-native-demo_screen'
 import { createStackNavigator } from '@react-navigation/stack'
 import { Home } from './src/screens'
+import { createModuleNavigator } from '@dangttp/demo-screens-module'
+import { AppScreenType } from 'src/ScreenType'
 
 const Stack = createStackNavigator()
-
-const AppRootNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-    </Stack.Navigator>
-  )
-}
+const Component = createModuleNavigator(Stack)
 
 const App = () => {
-  const navigationRef = useNavigationContainerRef()
+  const navigationRef = useNavigationContainerRef<AppScreenType>()
 
   return (
-    <ECOProvider
-      navigationRef={navigationRef}
-      onReady={() => {
-        console.log('App is ready')
-      }}
-    >
-      {createNavigationTree(AppRootNavigator)}
-    </ECOProvider>
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        {Component}
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
